@@ -1,0 +1,33 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+import joblib
+import pandas as pd
+import uvicorn
+from sklearn.datasets import load_iris
+
+# Load model
+model = joblib.load('iris_model.pkl')  # Make sure this file exists in the same directory
+
+# Load target names (for converting predicted index to class name)
+iris = load_iris()
+
+# Create FastAPI app instance
+app = FastAPI()
+
+# Define request model schema
+class IrisInput(BaseModel):
+    sepal_length: float
+    sepal_width: float
+    petal_length: float
+    petal_width: float
+
+# Define prediction endpoint
+@app.post("/predict")
+def predict_species(data: IrisInput):
+    df = pd.DataFrame([data.dict()])
+    prediction = model.predict(df)[0]
+    return {"species": iris.target_names[prediction]}
+
+# Run app only when executed as a script
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)

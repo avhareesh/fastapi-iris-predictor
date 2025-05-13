@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iris Species Predictor</title>
+</head>
+<body>
+    <h2>Enter Iris Flower Measurements</h2>
+    <form method="post">
+        Sepal Length: <input type="text" name="sepal_length"><br><br>
+        Sepal Width: <input type="text" name="sepal_width"><br><br>
+        Petal Length: <input type="text" name="petal_length"><br><br>
+        Petal Width: <input type="text" name="petal_width"><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+{% if result %}
+    <h3>{{ result }}</h3>
+{% endif %}
+
+</body>
+</html>
