@@ -1,5 +1,14 @@
 # fastapi-iris-predictor
 
+# Create the below folder structure
+
+your_project/
+├── static
+├── app.py
+├── iris_model.pkl
+├── templates/
+│   └── form.html
+
 
 # Go to command prompt in windows and install below
 
@@ -14,3 +23,5 @@ python app.py
 
 
 # Open your browser and type http://127.0.0.1:8000/
+
+
