@@ -3,10 +3,15 @@
 # Create the below folder structure
 
 your_project/
+
 ├── static
+
 ├── app.py
+
 ├── iris_model.pkl
+
 ├── templates/
+
 │   └── form.html
 
 
